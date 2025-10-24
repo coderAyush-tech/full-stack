@@ -189,7 +189,7 @@
     async function fetchCards() {
       try {
         cardContainer.innerHTML = '';
-        const res = await fetch('http://localhost:8080/cards');
+        const res = await fetch('https://springboot-backend-production-e3f3.up.railway.app/cards');
         const cards = await res.json();
         cards.forEach(card => {
   const div = document.createElement('div');
@@ -209,7 +209,7 @@
 
     async function fetchTeam(name) {
       try {
-        const res = await fetch(`http://localhost:8080/team?name=${encodeURIComponent(name)}`);
+        const res = await fetch(`https://springboot-backend-production-e3f3.up.railway.app/team?name=${encodeURIComponent(name)}`);
         const data = await res.json();
         currentTeamName = data.name;
         teamNameSpan.innerHTML = `
@@ -226,7 +226,7 @@
 
     async function removeTeam(name) {
       try {
-        await fetch(`http://localhost:8080/team?name=${encodeURIComponent(name)}`, {
+        await fetch(`https://springboot-backend-production-e3f3.up.railway.app/team?name=${encodeURIComponent(name)}`, {
           method: 'DELETE'
         });
         fetchCards();
@@ -251,7 +251,7 @@
       const image = document.getElementById('team-image-input').value;
 
       try {
-        await fetch('http://localhost:8080/team', {
+        await fetch('https://springboot-backend-production-e3f3.up.railway.app/team', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, motto, color, image })
@@ -278,7 +278,7 @@
     const image = document.getElementById('update-image').value;
 
     try {
-      await fetch('http://localhost:8080/team', {
+      await fetch('https://springboot-backend-production-e3f3.up.railway.app/team', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
